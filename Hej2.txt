@@ -1,1 +1,3 @@
 witaj
+napisz program do generowania liczb losowych. uzytkownik podaje dlugosc liczby tzn ile ma miec cyfr a generator generuje takiej długości liczbę
+w python
