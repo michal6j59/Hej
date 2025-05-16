@@ -1,0 +1,190 @@
+{
+  "title": "Generator Liczb Losowych",
+  "subtitle": "Interaktywny Przewodnik dla Młodych Programistów",
+  "introduction": {
+    "pl": {
+      "title": "Krok 6: Budowanie generatora opartego na długości",
+      "content": "W tym zadaniu zbudujemy generator liczb losowych, który będzie tworzył liczby o określonej długości (ilości cyfr). Na przykład, jeśli użytkownik chce liczbę 3-cyfrową, wygenerujemy losową liczbę między 100 a 999.",
+      "goal": "Napisz program, który zapyta użytkownika, ile cyfr ma mieć wygenerowana liczba losowa, a następnie wygeneruje i wyświetli taką liczbę.",
+      "example": "Ile cyfr ma mieć Twoja losowa liczba? 4\nTwoja 4-cyfrowa losowa liczba to: 3829"
+    },
+    "en": {
+      "title": "Step 6: Building a Length-Based Generator",
+      "content": "In this task, we will build a random number generator that creates numbers with a specific length (number of digits). For example, if the user wants a 3-digit number, we will generate a random number between 100 and 999.",
+      "goal": "Write a program that asks the user how many digits they want in their random number, and then generates and displays such a number.",
+      "example": "How many digits would you like in your random number? 4\nYour 4-digit random number is: 3829"
+    },
+    "buttonText": "Zacznijmy kodować! ▶️"
+  },
+  "steps": [
+    {
+      "id": "step-1",
+      "pl": {
+        "title": "Krok 1: Importowanie biblioteki random",
+        "intro": "Aby generować liczby losowe, potrzebujemy specjalnej biblioteki o nazwie <strong>random</strong>. Biblioteka to zbiór gotowych funkcji, które możemy wykorzystać w naszym programie.\n\nDodajmy do naszego programu linię kodu, która importuje (dodaje) bibliotekę random:",
+        "code": "import random",
+        "explanation": "Ta linia mówi Pythonowi: \"Chcę korzystać z narzędzi do generowania liczb losowych, więc zaimportuj mi bibliotekę random\"."
+      },
+      "en": {
+        "title": "Step 1: Importing the random library",
+        "intro": "To generate random numbers, we need a special library called <strong>random</strong>. A library is a collection of ready-made functions that we can use in our program.\n\nLet's add a line of code to our program that imports the random library:",
+        "code": "import random",
+        "explanation": "This line tells Python: \"I want to use tools for generating random numbers, so import the random library for me\"."
+      },
+      "buttonText": "Następny krok ▶️"
+    },
+    {
+      "id": "step-2",
+      "pl": {
+        "title": "Krok 2: Powitanie użytkownika",
+        "intro": "Dobrą praktyką jest, aby program przywitał użytkownika i wyjaśnił, co robi. Użyjemy funkcji <strong>print()</strong>, aby wyświetlić powitanie.",
+        "code": "import random\n\nprint(\"Witaj w Generatorze Liczb Losowych!\")",
+        "explanation": "Ta linia wyświetla powitanie, gdy program zostanie uruchomiony. Tekst między cudzysłowami zostanie pokazany użytkownikowi."
+      },
+      "en": {
+        "title": "Step 2: Greeting the user",
+        "intro": "It's good practice for a program to greet the user and explain what it does. We'll use the <strong>print()</strong> function to display a greeting.",
+        "code": "import random\n\nprint(\"Welcome to the Random Number Generator!\")",
+        "explanation": "This line displays a greeting when the program is run. The text between the quotation marks will be shown to the user."
+      },
+      "buttonText": "Następny krok ▶️"
+    },
+    {
+      "id": "step-3",
+      "pl": {
+        "title": "Krok 3: Pobieranie długości liczby od użytkownika",
+        "intro": "Teraz zapytamy użytkownika, ile cyfr ma mieć generowana losowa liczba. Do tego użyjemy funkcji <strong>input()</strong>, która pozwala użytkownikowi wprowadzić dane.",
+        "code": "import random\n\nprint(\"Witaj w Generatorze Liczb Losowych!\")\ndlugosc = input(\"Ile cyfr ma mieć Twoja losowa liczba? \")",
+        "explanation": "Ta linia:\n1. Wyświetla pytanie: \"Ile cyfr ma mieć Twoja losowa liczba?\"\n2. Czeka, aż użytkownik wpisze odpowiedź i naciśnie Enter\n3. Zapisuje wprowadzoną wartość w zmiennej o nazwie <strong>dlugosc</strong>"
+      },
+      "en": {
+        "title": "Step 3: Getting the number length from the user",
+        "intro": "Now we'll ask the user how many digits they want in the generated random number. For this, we'll use the <strong>input()</strong> function, which allows the user to enter data.",
+        "code": "import random\n\nprint(\"Welcome to the Random Number Generator!\")\nlength = input(\"How many digits would you like in your random number? \")",
+        "explanation": "This line:\n1. Displays the question: \"How many digits would you like in your random number?\"\n2. Waits for the user to type an answer and press Enter\n3. Saves the entered value in a variable named <strong>length</strong>"
+      },
+      "buttonText": "Następny krok ▶️"
+    },
+    {
+      "id": "step-4",
+      "pl": {
+        "title": "Krok 4: Konwersja wprowadzonej wartości na liczbę",
+        "intro": "Funkcja <strong>input()</strong> zawsze zwraca tekst (string), nawet jeśli użytkownik wpisał liczbę. Aby móc wykonywać działania matematyczne, musimy przekonwertować ten tekst na liczbę całkowitą za pomocą funkcji <strong>int()</strong>.",
+        "code": "import random\n\nprint(\"Witaj w Generatorze Liczb Losowych!\")\ndlugosc = input(\"Ile cyfr ma mieć Twoja losowa liczba? \")\ndlugosc = int(dlugosc)",
+        "explanation": "Ta linia przekształca tekst wprowadzony przez użytkownika na liczbę całkowitą. Na przykład, jeśli użytkownik wpisał \"4\", ta linia zamienia tekst \"4\" na liczbę 4, którą można używać w obliczeniach."
+      },
+      "en": {
+        "title": "Step 4: Converting the entered value to a number",
+        "intro": "The <strong>input()</strong> function always returns text (string), even if the user typed a number. To be able to perform mathematical operations, we need to convert this text to an integer using the <strong>int()</strong> function.",
+        "code": "import random\n\nprint(\"Welcome to the Random Number Generator!\")\nlength = input(\"How many digits would you like in your random number? \")\nlength = int(length)",
+        "explanation": "This line transforms the text entered by the user into an integer. For example, if the user entered \"4\", this line converts the text \"4\" to the number 4, which can be used in calculations."
+      },
+      "buttonText": "Następny krok ▶️"
+    },
+    {
+      "id": "step-5",
+      "pl": {
+        "title": "Krok 5: Obliczanie zakresu liczb",
+        "intro": "Aby wygenerować liczbę o określonej długości, musimy najpierw ustalić, jaka jest najmniejsza i największa liczba o takiej długości.\n\n• Najmniejsza liczba 1-cyfrowa to 1 (albo 0, jeśli pozwalamy na zera)\n• Najmniejsza liczba 2-cyfrowa to 10\n• Najmniejsza liczba 3-cyfrowa to 100\n• Najmniejsza liczba 4-cyfrowa to 1000\n\nWidzimy wzór: <strong>10^(długość-1)</strong>\n\nPodobnie dla największych liczb:\n\n• Największa liczba 1-cyfrowa to 9\n• Największa liczba 2-cyfrowa to 99\n• Największa liczba 3-cyfrowa to 999\n\nWidzimy wzór: <strong>(10^długość) - 1</strong>",
+        "code": "import random\n\nprint(\"Witaj w Generatorze Liczb Losowych!\")\ndlugosc = input(\"Ile cyfr ma mieć Twoja losowa liczba? \")\ndlugosc = int(dlugosc)\n\n# Generowanie losowej liczby o określonej długości\nmin_wartosc = 10 ** (dlugosc - 1)  # Najmniejsza liczba o 'dlugosc' cyfrach\nmax_wartosc = (10 ** dlugosc) - 1  # Największa liczba o 'dlugosc' cyfrach",
+        "explanation": "W tych liniach:\n• <strong>10 ** (dlugosc - l)</strong> oznacza 10 podniesione do potęgi (długość-1). Na przykład, dla długości 3, będzie to 10^2 = 100.\n• <strong>(10 ** dlugosc) - 1</strong> oznacza 10 podniesione do potęgi długość, a następnie odjęte 1. Dla długości 3, będzie to 10^3 - 1 = 999.\n\nW ten sposób obliczyliśmy zakres liczb, z którego będziemy losować."
+      },
+      "en": {
+        "title": "Step 5: Calculating the range of numbers",
+        "intro": "To generate a number with a specific length, we first need to determine what is the smallest and largest number with that length.\n\n• The smallest 1-digit number is 1 (or 0, if we allow zeros)\n• The smallest 2-digit number is 10\n• The smallest 3-digit number is 100\n• The smallest 4-digit number is 1000\n\nWe see a pattern: <strong>10^(length-1)</strong>\n\nSimilarly for the largest numbers:\n\n• The largest 1-digit number is 9\n• The largest 2-digit number is 99\n• The largest 3-digit number is 999\n\nWe see a pattern: <strong>(10^length) - 1</strong>",
+        "code": "import random\n\nprint(\"Welcome to the Random Number Generator!\")\nlength = input(\"How many digits would you like in your random number? \")\nlength = int(length)\n\n# Generating a random number with the specified length\nmin_value = 10 ** (length - 1)  # The smallest number with 'length' digits\nmax_value = (10 ** length) - 1  # The largest number with 'length' digits",
+        "explanation": "In these lines:\n• <strong>10 ** (length - 1)</strong> means 10 raised to the power of (length-1). For example, for a length of 3, this will be 10^2 = 100.\n• <strong>(10 ** length) - 1</strong> means 10 raised to the power of length, and then 1 subtracted. For a length of 3, this will be 10^3 - 1 = 999.\n\nThis way, we've calculated the range of numbers from which we'll be randomly selecting."
+      },
+      "buttonText": "Następny krok ▶️"
+    },
+    {
+      "id": "step-6",
+      "pl": {
+        "title": "Krok 6: Dodanie sprawdzenia poprawności danych",
+        "intro": "Co się stanie, jeśli użytkownik wpisze 0 lub liczbę ujemną? Takie wartości nie mają sensu dla naszego programu. Dodajmy sprawdzenie, aby upewnić się, że użytkownik podał dodatnią liczbę cyfr.",
+        "code": "import random\n\nprint(\"Witaj w Generatorze Liczb Losowych!\")\ndlugosc = input(\"Ile cyfr ma mieć Twoja losowa liczba? \")\ndlugosc = int(dlugosc)\n\n# Generowanie losowej liczby o określonej długości\nmin_wartosc = 10 ** (dlugosc - 1)  # Najmniejsza liczba o 'dlugosc' cyfrach\nmax_wartosc = (10 ** dlugosc) - 1  # Największa liczba o 'dlugosc' cyfrach\n\nif dlugosc <= 0:\n    print(\"Proszę podać dodatnią liczbę cyfr!\")",
+        "explanation": "W tych liniach używamy warunku <strong>if</strong> (jeżeli), aby sprawdzić, czy użytkownik podał liczbę mniejszą lub równą 0. Jeśli tak, wyświetlamy komunikat o błędzie.\n\nInstrukcja <strong>if</strong> działa następująco:\n1. Sprawdza warunek <strong>dlugosc <= 0</strong>\n2. Jeśli warunek jest prawdziwy (czyli długość jest mniejsza lub równa 0), wykonuje kod po dwukropku\n3. Jeśli warunek jest fałszywy, pomija ten kod"
+      },
+      "en": {
+        "title": "Step 6: Adding data validation",
+        "intro": "What happens if the user enters 0 or a negative number? Such values don't make sense for our program. Let's add a check to make sure the user entered a positive number of digits.",
+        "code": "import random\n\nprint(\"Welcome to the Random Number Generator!\")\nlength = input(\"How many digits would you like in your random number? \")\nlength = int(length)\n\n# Generating a random number with the specified length\nmin_value = 10 ** (length - 1)  # The smallest number with 'length' digits\nmax_value = (10 ** length) - 1  # The largest number with 'length' digits\n\nif length <= 0:\n    print(\"Please enter a positive number of digits!\")",
+        "explanation": "In these lines, we use the <strong>if</strong> condition to check if the user entered a number less than or equal to 0. If so, we display an error message.\n\nThe <strong>if</strong> statement works as follows:\n1. It checks the condition <strong>length <= 0</strong>\n2. If the condition is true (i.e., the length is less than or equal to 0), it executes the code after the colon\n3. If the condition is false, it skips this code"
+      },
+      "buttonText": "Następny krok ▶️"
+    },
+    {
+      "id": "step-7",
+      "pl": {
+        "title": "Krok 7: Generowanie i wyświetlanie liczby losowej",
+        "intro": "Teraz dodamy kod, który będzie generował losową liczbę w obliczonym zakresie, ale tylko jeśli użytkownik podał prawidłową długość (większą od 0).",
+        "code": "import random\n\nprint(\"Witaj w Generatorze Liczb Losowych!\")\ndlugosc = input(\"Ile cyfr ma mieć Twoja losowa liczba? \")\ndlugosc = int(dlugosc)\n\n# Generowanie losowej liczby o określonej długości\nmin_wartosc = 10 ** (dlugosc - 1)  # Najmniejsza liczba o 'dlugosc' cyfrach\nmax_wartosc = (10 ** dlugosc) - 1  # Największa liczba o 'dlugosc' cyfrach\n\nif dlugosc <= 0:\n    print(\"Proszę podać dodatnią liczbę cyfr!\")\nelse:\n    losowa_liczba = random.randint(min_wartosc, max_wartosc)\n    print(\"Twoja \" + str(dlugosc) + \"-cyfrowa losowa liczba to: \" + str(losowa_liczba))",
+        "explanation": "W tych liniach:\n1. Używamy <strong>else</strong> (w przeciwnym razie), aby wykonać kod tylko wtedy, gdy warunek <strong>dlugosc <= 0</strong> jest fałszywy (czyli gdy długość jest większa od 0).\n2. Funkcja <strong>random.randint(min_wartosc, max_wartosc)</strong> generuje losową liczbę całkowitą między min_wartosc a max_wartosc (włącznie).\n3. Wynik zapisujemy w zmiennej <strong>losowa_liczba</strong>.\n4. Na końcu wyświetlamy wynik, łącząc teksty i zmienne. Funkcja <strong>str()</strong> zamienia liczby na tekst, aby można je było połączyć z innym tekstem."
+      },
+      "en": {
+        "title": "Step 7: Generating and displaying the random number",
+        "intro": "Now we'll add code that will generate a random number in the calculated range, but only if the user provided a valid length (greater than 0).",
+        "code": "import random\n\nprint(\"Welcome to the Random Number Generator!\")\nlength = input(\"How many digits would you like in your random number? \")\nlength = int(length)\n\n# Generating a random number with the specified length\nmin_value = 10 ** (length - 1)  # The smallest number with 'length' digits\nmax_value = (10 ** length) - 1  # The largest number with 'length' digits\n\nif length <= 0:\n    print(\"Please enter a positive number of digits!\")\nelse:\n    random_number = random.randint(min_value, max_value)\n    print(\"Your \" + str(length) + \"-digit random number is: \" + str(random_number))",
+        "explanation": "In these lines:\n1. We use <strong>else</strong> (otherwise) to execute code only when the condition <strong>length <= 0</strong> is false (i.e., when the length is greater than 0).\n2. The function <strong>random.randint(min_value, max_value)</strong> generates a random integer between min_value and max_value (inclusive).\n3. We save the result in the variable <strong>random_number</strong>.\n4. Finally, we display the result, combining texts and variables. The <strong>str()</strong> function converts numbers to text so they can be combined with other text."
+      },
+      "buttonText": "Zobacz pełny kod ▶️"
+    },
+    {
+      "id": "complete",
+      "pl": {
+        "title": "Gratulacje! Oto pełny kod Twojego generatora:",
+        "code": "import random\n\nprint(\"Witaj w Generatorze Liczb Losowych!\")\ndlugosc = input(\"Ile cyfr ma mieć Twoja losowa liczba? \")\ndlugosc = int(dlugosc)\n\n# Generowanie losowej liczby o określonej długości\nmin_wartosc = 10 ** (dlugosc - 1)  # Najmniejsza liczba o 'dlugosc' cyfrach\nmax_wartosc = (10 ** dlugosc) - 1  # Największa liczba o 'dlugosc' cyfrach\n\nif dlugosc <= 0:\n    print(\"Proszę podać dodatnią liczbę cyfr!\")\nelse:\n    losowa_liczba = random.randint(min_wartosc, max_wartosc)\n    print(\"Twoja \" + str(dlugosc) + \"-cyfrowa losowa liczba to: \" + str(losowa_liczba))",
+        "how_it_works": "Jak działa ten program?",
+        "steps": [
+          "Importuje bibliotekę random do generowania liczb losowych",
+          "Wita użytkownika",
+          "Pyta, ile cyfr ma mieć liczba i zapisuje odpowiedź",
+          "Oblicza zakres liczb o podanej długości",
+          "Sprawdza, czy podana długość jest prawidłowa (większa od 0)",
+          "Generuje losową liczbę w obliczonym zakresie",
+          "Wyświetla wynik"
+        ],
+        "what_next": "Co dalej?",
+        "next_steps": [
+          "Pozwól użytkownikowi wygenerować wiele liczb naraz",
+          "Dodaj możliwość wyboru, czy liczba może zaczynać się od zera",
+          "Dodaj obsługę błędów, gdy użytkownik wprowadzi tekst zamiast liczby",
+          "Stwórz grę, w której użytkownik zgaduje wygenerowaną liczbę"
+        ],
+        "restart_button": "Zacznij od nowa ▶️"
+      },
+      "en": {
+        "title": "Congratulations! Here's the complete code for your generator:",
+        "code": "import random\n\nprint(\"Welcome to the Random Number Generator!\")\nlength = input(\"How many digits would you like in your random number? \")\nlength = int(length)\n\n# Generating a random number with the specified length\nmin_value = 10 ** (length - 1)  # The smallest number with 'length' digits\nmax_value = (10 ** length) - 1  # The largest number with 'length' digits\n\nif length <= 0:\n    print(\"Please enter a positive number of digits!\")\nelse:\n    random_number = random.randint(min_value, max_value)\n    print(\"Your \" + str(length) + \"-digit random number is: \" + str(random_number))",
+        "how_it_works": "How does this program work?",
+        "steps": [
+          "It imports the random library for generating random numbers",
+          "It greets the user",
+          "It asks how many digits the number should have and saves the answer",
+          "It calculates the range of numbers with the given length",
+          "It checks if the given length is valid (greater than 0)",
+          "It generates a random number in the calculated range",
+          "It displays the result"
+        ],
+        "what_next": "What's next?",
+        "next_steps": [
+          "Allow the user to generate multiple numbers at once",
+          "Add the option to choose whether the number can start with zero",
+          "Add error handling for when the user enters text instead of a number",
+          "Create a game where the user guesses the generated number"
+        ],
+        "restart_button": "Start again ▶️"
+      }
+    }
+  ],
+  "conclusion": {
+    "pl": {
+      "title": "Koniec",
+      "message": "Dziękujemy za ukończenie tego interaktywnego przewodnika! Teraz wiesz, jak stworzyć generator liczb losowych o określonej długości. Zachęcamy do eksperymentowania z kodem i wprowadzania własnych modyfikacji."
+    },
+    "en": {
+      "title": "The End",
+      "message": "Thank you for completing this interactive guide! Now you know how to create a random number generator with a specified length. We encourage you to experiment with the code and introduce your own modifications."
+    }
+  }
+}
