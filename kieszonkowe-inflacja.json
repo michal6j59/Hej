@@ -1,0 +1,272 @@
+{
+  "title": "Kieszonkowe i Inflacja",
+  "subtitle": "Interaktywny Przewodnik dla Młodych Finansistów",
+  "introduction": {
+    "pl": {
+      "title": "Jak obliczyć wzrost kieszonkowego z uwzględnieniem inflacji",
+      "content": "W tym zadaniu nauczymy się, jak obliczyć, o ile powinno wzrosnąć Twoje kieszonkowe, biorąc pod uwagę inflację. Inflacja to zjawisko, które sprawia, że za te same pieniądze możemy kupić coraz mniej. Dlatego ważne jest, aby nasze kieszonkowe również rosło!",
+      "goal": "Napisz program, który pomoże Ci obliczyć, o ile powinno wzrosnąć Twoje kieszonkowe, aby zachować jego realną wartość w obliczu inflacji.",
+      "example": "Twoje aktualne kieszonkowe: 20 zł\nAktualna inflacja: 5%\nKieszonkowe z uwzględnieniem inflacji: 21 zł"
+    },
+    "en": {
+      "title": "How to calculate pocket money growth considering inflation",
+      "content": "In this task, we will learn how to calculate how much your pocket money should increase, taking inflation into account. Inflation is a phenomenon that makes us able to buy less with the same money. That's why it's important for our pocket money to grow as well!",
+      "goal": "Write a program that will help you calculate how much your pocket money should increase to maintain its real value in the face of inflation.",
+      "example": "Your current pocket money: 20 PLN\nCurrent inflation: 5%\nPocket money adjusted for inflation: 21 PLN"
+    },
+    "buttonText": "Zacznijmy kodować! ▶️"
+  },
+  "steps": [
+    {
+      "id": "step-1",
+      "pl": {
+        "title": "Krok 1: Rozumienie inflacji",
+        "intro": "Zanim zaczniemy kodować, zrozummy czym jest inflacja. <strong>Inflacja</strong> to wzrost cen produktów i usług w czasie. Kiedy mamy inflację na poziomie 5%, oznacza to, że coś, co kosztowało 100 zł rok temu, teraz kosztuje 105 zł.\n\nZacznijmy od zaimportowania potrzebnych narzędzi:",
+        "code": "# Ten program pomoże nam obliczyć, jak powinno rosnąć nasze kieszonkowe\nprint(\"Witaj w Kalkulatorze Kieszonkowego!\")",
+        "explanation": "Ten kod po prostu wyświetla powitanie. Zaczynamy od prostych kroków!"
+      },
+      "en": {
+        "title": "Step 1: Understanding inflation",
+        "intro": "Before we start coding, let's understand what inflation is. <strong>Inflation</strong> is the increase in prices of products and services over time. When we have inflation at 5%, it means that something that cost 100 PLN a year ago now costs 105 PLN.\n\nLet's start by importing the necessary tools:",
+        "code": "# This program will help us calculate how our pocket money should grow\nprint(\"Welcome to the Pocket Money Calculator!\")",
+        "explanation": "This code simply displays a greeting. We're starting with simple steps!"
+      },
+      "buttonText": "Następny krok ▶️"
+    },
+    {
+      "id": "step-2",
+      "pl": {
+        "title": "Krok 2: Pobieranie informacji o kieszonkowym",
+        "intro": "Teraz zapytamy użytkownika o jego aktualne kieszonkowe. Użyjemy funkcji <strong>input()</strong> do pobrania tej informacji i funkcji <strong>float()</strong> do zamiany tekstu na liczbę z przecinkiem.",
+        "code": "# Ten program pomoże nam obliczyć, jak powinno rosnąć nasze kieszonkowe\nprint(\"Witaj w Kalkulatorze Kieszonkowego!\")\n\n# Pobieramy informację o aktualnym kieszonkowym\nkieszonkowe = float(input(\"Podaj swoje aktualne miesięczne kieszonkowe (w zł): \"))",
+        "explanation": "Ta linia kodu:\n1. Wyświetla pytanie o aktualne kieszonkowe\n2. Czeka, aż użytkownik wpisze kwotę i naciśnie Enter\n3. Zamienia wprowadzony tekst na liczbę z przecinkiem (float)\n4. Zapisuje tę liczbę w zmiennej o nazwie <strong>kieszonkowe</strong>"
+      },
+      "en": {
+        "title": "Step 2: Getting information about pocket money",
+        "intro": "Now we'll ask the user about their current pocket money. We'll use the <strong>input()</strong> function to get this information and the <strong>float()</strong> function to convert text to a decimal number.",
+        "code": "# This program will help us calculate how our pocket money should grow\nprint(\"Welcome to the Pocket Money Calculator!\")\n\n# Getting information about current pocket money\npocket_money = float(input(\"Enter your current monthly pocket money (in PLN): \"))",
+        "explanation": "This line of code:\n1. Displays a question about current pocket money\n2. Waits for the user to enter an amount and press Enter\n3. Converts the entered text to a decimal number (float)\n4. Saves this number in a variable named <strong>pocket_money</strong>"
+      },
+      "buttonText": "Następny krok ▶️"
+    },
+    {
+      "id": "step-3",
+      "pl": {
+        "title": "Krok 3: Pobieranie informacji o inflacji",
+        "intro": "Teraz zapytamy o poziom inflacji. Inflację podajemy zwykle w procentach, na przykład 5%.",
+        "code": "# Ten program pomoże nam obliczyć, jak powinno rosnąć nasze kieszonkowe\nprint(\"Witaj w Kalkulatorze Kieszonkowego!\")\n\n# Pobieramy informację o aktualnym kieszonkowym\nkieszonkowe = float(input(\"Podaj swoje aktualne miesięczne kieszonkowe (w zł): \"))\n\n# Pobieramy informację o inflacji\ninflacja = float(input(\"Podaj aktualny poziom inflacji (w procentach, np. 5): \"))",
+        "explanation": "Ta linia kodu działa podobnie jak poprzednia:\n1. Pyta o poziom inflacji\n2. Zamienia wprowadzony tekst na liczbę\n3. Zapisuje tę liczbę w zmiennej <strong>inflacja</strong>"
+      },
+      "en": {
+        "title": "Step 3: Getting information about inflation",
+        "intro": "Now we'll ask about the inflation rate. Inflation is usually given as a percentage, for example 5%.",
+        "code": "# This program will help us calculate how our pocket money should grow\nprint(\"Welcome to the Pocket Money Calculator!\")\n\n# Getting information about current pocket money\npocket_money = float(input(\"Enter your current monthly pocket money (in PLN): \"))\n\n# Getting information about inflation\ninflation = float(input(\"Enter the current inflation rate (in percent, e.g. 5): \"))",
+        "explanation": "This line of code works similarly to the previous one:\n1. Asks for the inflation rate\n2. Converts the entered text to a number\n3. Saves this number in a variable named <strong>inflation</strong>"
+      },
+      "buttonText": "Następny krok ▶️"
+    },
+    {
+      "id": "step-4",
+      "pl": {
+        "title": "Krok 4: Obliczanie miesięcznego wzrostu kieszonkowego",
+        "intro": "Teraz obliczymy, o ile powinno wzrosnąć Twoje kieszonkowe, aby uwzględnić miesięczną inflację. Miesięczna inflacja to mniej więcej roczna inflacja podzielona przez 12.",
+        "code": "# Ten program pomoże nam obliczyć, jak powinno rosnąć nasze kieszonkowe\nprint(\"Witaj w Kalkulatorze Kieszonkowego!\")\n\n# Pobieramy informacje\nkieszonkowe = float(input(\"Podaj swoje aktualne miesięczne kieszonkowe (w zł): \"))\ninflacja = float(input(\"Podaj aktualny poziom rocznej inflacji (w procentach, np. 5): \"))\n\n# Obliczamy miesięczną inflację\nmiesięczna_inflacja = inflacja / 12\n\n# Obliczamy nowe kieszonkowe z uwzględnieniem miesięcznej inflacji\nnowe_kieszonkowe_miesięczne = kieszonkowe * (1 + miesięczna_inflacja / 100)\n\nprint(f\"Twoje kieszonkowe z uwzględnieniem miesięcznej inflacji powinno wynosić: {nowe_kieszonkowe_miesięczne:.2f} zł\")",
+        "explanation": "W tym kodzie:\n1. Dzielimy roczną inflację przez 12, aby uzyskać miesięczną inflację\n2. Obliczamy nowe kieszonkowe, mnożąc aktualne przez (1 + miesięczna_inflacja/100)\n3. Symbol /100 jest potrzebny, bo inflację podajemy w procentach (np. 5%), a w obliczeniach potrzebujemy jej jako ułamka (0.05)\n4. Używamy f-string (f\"...\") do sformatowania wyniku, a :.2f oznacza, że chcemy wyświetlić liczbę z dwoma miejscami po przecinku"
+      },
+      "en": {
+        "title": "Step 4: Calculating monthly pocket money growth",
+        "intro": "Now we'll calculate how much your pocket money should increase to account for monthly inflation. Monthly inflation is roughly the annual inflation divided by 12.",
+        "code": "# This program will help us calculate how our pocket money should grow\nprint(\"Welcome to the Pocket Money Calculator!\")\n\n# Getting information\npocket_money = float(input(\"Enter your current monthly pocket money (in PLN): \"))\ninflation = float(input(\"Enter the current annual inflation rate (in percent, e.g. 5): \"))\n\n# Calculating monthly inflation\nmonthly_inflation = inflation / 12\n\n# Calculating new pocket money considering monthly inflation\nnew_pocket_money_monthly = pocket_money * (1 + monthly_inflation / 100)\n\nprint(f\"Your pocket money adjusted for monthly inflation should be: {new_pocket_money_monthly:.2f} PLN\")",
+        "explanation": "In this code:\n1. We divide annual inflation by 12 to get monthly inflation\n2. We calculate new pocket money by multiplying the current one by (1 + monthly_inflation/100)\n3. The /100 symbol is necessary because we give inflation in percentages (e.g. 5%), and in calculations we need it as a fraction (0.05)\n4. We use an f-string (f\"...\") to format the result, and :.2f means that we want to display the number with two decimal places"
+      },
+      "buttonText": "Następny krok ▶️"
+    },
+    {
+      "id": "step-5",
+      "pl": {
+        "title": "Krok 5: Obliczanie rocznego wzrostu kieszonkowego",
+        "intro": "Teraz obliczymy, o ile powinno wzrosnąć Twoje kieszonkowe, jeśli uwzględnimy roczną inflację od razu.",
+        "code": "# Ten program pomoże nam obliczyć, jak powinno rosnąć nasze kieszonkowe\nprint(\"Witaj w Kalkulatorze Kieszonkowego!\")\n\n# Pobieramy informacje\nkieszonkowe = float(input(\"Podaj swoje aktualne miesięczne kieszonkowe (w zł): \"))\ninflacja = float(input(\"Podaj aktualny poziom rocznej inflacji (w procentach, np. 5): \"))\n\n# Obliczamy miesięczną inflację\nmiesięczna_inflacja = inflacja / 12\n\n# Obliczamy nowe kieszonkowe z uwzględnieniem miesięcznej inflacji\nnowe_kieszonkowe_miesięczne = kieszonkowe * (1 + miesięczna_inflacja / 100)\n\n# Obliczamy nowe kieszonkowe z uwzględnieniem rocznej inflacji\nnowe_kieszonkowe_roczne = kieszonkowe * (1 + inflacja / 100)\n\nprint(f\"Twoje kieszonkowe z uwzględnieniem miesięcznej inflacji powinno wynosić: {nowe_kieszonkowe_miesięczne:.2f} zł\")\nprint(f\"Twoje kieszonkowe z uwzględnieniem rocznej inflacji powinno wynosić: {nowe_kieszonkowe_roczne:.2f} zł\")",
+        "explanation": "W tym kodzie dodaliśmy obliczenie nowego kieszonkowego z uwzględnieniem rocznej inflacji. To działa podobnie jak poprzednie obliczenie, ale używamy pełnej wartości inflacji, a nie dzielimy jej przez 12."
+      },
+      "en": {
+        "title": "Step 5: Calculating annual pocket money growth",
+        "intro": "Now we'll calculate how much your pocket money should increase if we consider annual inflation right away.",
+        "code": "# This program will help us calculate how our pocket money should grow\nprint(\"Welcome to the Pocket Money Calculator!\")\n\n# Getting information\npocket_money = float(input(\"Enter your current monthly pocket money (in PLN): \"))\ninflation = float(input(\"Enter the current annual inflation rate (in percent, e.g. 5): \"))\n\n# Calculating monthly inflation\nmonthly_inflation = inflation / 12\n\n# Calculating new pocket money considering monthly inflation\nnew_pocket_money_monthly = pocket_money * (1 + monthly_inflation / 100)\n\n# Calculating new pocket money considering annual inflation\nnew_pocket_money_annual = pocket_money * (1 + inflation / 100)\n\nprint(f\"Your pocket money adjusted for monthly inflation should be: {new_pocket_money_monthly:.2f} PLN\")\nprint(f\"Your pocket money adjusted for annual inflation should be: {new_pocket_money_annual:.2f} PLN\")",
+        "explanation": "In this code, we've added a calculation of the new pocket money considering annual inflation. This works similarly to the previous calculation, but we use the full inflation value instead of dividing it by 12."
+      },
+      "buttonText": "Następny krok ▶️"
+    },
+    {
+      "id": "step-6",
+      "pl": {
+        "title": "Krok 6: Porównanie różnych podejść",
+        "intro": "Teraz porównamy różne podejścia do obliczania wzrostu kieszonkowego i zobaczymy, które jest najlepsze.",
+        "code": "# Ten program pomoże nam obliczyć, jak powinno rosnąć nasze kieszonkowe\nprint(\"Witaj w Kalkulatorze Kieszonkowego!\")\n\n# Pobieramy informacje\nkieszonkowe = float(input(\"Podaj swoje aktualne miesięczne kieszonkowe (w zł): \"))\ninflacja = float(input(\"Podaj aktualny poziom rocznej inflacji (w procentach, np. 5): \"))\n\n# Obliczamy miesięczną inflację\nmiesięczna_inflacja = inflacja / 12\n\n# Obliczamy nowe kieszonkowe z uwzględnieniem miesięcznej inflacji\nnowe_kieszonkowe_miesięczne = kieszonkowe * (1 + miesięczna_inflacja / 100)\n\n# Obliczamy nowe kieszonkowe z uwzględnieniem rocznej inflacji\nnowe_kieszonkowe_roczne = kieszonkowe * (1 + inflacja / 100)\n\n# Obliczamy kieszonkowe z miesięcznym wzrostem przez 12 miesięcy (procent składany)\nkieszonkowe_składane = kieszonkowe\nfor miesiąc in range(12):\n    kieszonkowe_składane = kieszonkowe_składane * (1 + miesięczna_inflacja / 100)\n\nprint(f\"Twoje kieszonkowe z uwzględnieniem miesięcznej inflacji powinno wynosić: {nowe_kieszonkowe_miesięczne:.2f} zł\")\nprint(f\"Twoje kieszonkowe z uwzględnieniem rocznej inflacji powinno wynosić: {nowe_kieszonkowe_roczne:.2f} zł\")\nprint(f\"Twoje kieszonkowe po roku z miesięcznym wzrostem (procent składany): {kieszonkowe_składane:.2f} zł\")\n\n# Sprawdźmy, która metoda daje najlepszy wynik\nprint(\"\\nPorównanie metod:\")\nif kieszonkowe_składane > nowe_kieszonkowe_roczne and kieszonkowe_składane > nowe_kieszonkowe_miesięczne:\n    print(\"Najlepiej jest zwiększać kieszonkowe co miesiąc o miesięczną inflację (procent składany)\")\nelif nowe_kieszonkowe_roczne > nowe_kieszonkowe_miesięczne:\n    print(\"Najlepiej jest zwiększyć kieszonkowe raz w roku o całą roczną inflację\")\nelse:\n    print(\"Najlepiej jest zwiększyć kieszonkowe raz w miesiącu o miesięczną inflację\")",
+        "explanation": "W tym kodzie:\n1. Dodaliśmy trzecią metodę - procent składany. To oznacza, że co miesiąc zwiększamy kieszonkowe o miesięczną inflację\n2. Używamy pętli for, żeby powtórzyć to 12 razy (dla każdego miesiąca w roku)\n3. Na końcu porównujemy wszystkie metody i pokazujemy, która daje najlepszy wynik"
+      },
+      "en": {
+        "title": "Step 6: Comparing different approaches",
+        "intro": "Now we'll compare different approaches to calculating pocket money growth and see which one is the best.",
+        "code": "# This program will help us calculate how our pocket money should grow\nprint(\"Welcome to the Pocket Money Calculator!\")\n\n# Getting information\npocket_money = float(input(\"Enter your current monthly pocket money (in PLN): \"))\ninflation = float(input(\"Enter the current annual inflation rate (in percent, e.g. 5): \"))\n\n# Calculating monthly inflation\nmonthly_inflation = inflation / 12\n\n# Calculating new pocket money considering monthly inflation\nnew_pocket_money_monthly = pocket_money * (1 + monthly_inflation / 100)\n\n# Calculating new pocket money considering annual inflation\nnew_pocket_money_annual = pocket_money * (1 + inflation / 100)\n\n# Calculating pocket money with monthly growth over 12 months (compound interest)\ncompound_pocket_money = pocket_money\nfor month in range(12):\n    compound_pocket_money = compound_pocket_money * (1 + monthly_inflation / 100)\n\nprint(f\"Your pocket money adjusted for monthly inflation should be: {new_pocket_money_monthly:.2f} PLN\")\nprint(f\"Your pocket money adjusted for annual inflation should be: {new_pocket_money_annual:.2f} PLN\")\nprint(f\"Your pocket money after a year with monthly growth (compound interest): {compound_pocket_money:.2f} PLN\")\n\n# Let's check which method gives the best result\nprint(\"\\nComparison of methods:\")\nif compound_pocket_money > new_pocket_money_annual and compound_pocket_money > new_pocket_money_monthly:\n    print(\"It is best to increase pocket money every month by monthly inflation (compound interest)\")\nelif new_pocket_money_annual > new_pocket_money_monthly:\n    print(\"It is best to increase pocket money once a year by the entire annual inflation\")\nelse:\n    print(\"It is best to increase pocket money once a month by monthly inflation\")",
+        "explanation": "In this code:\n1. We added a third method - compound interest. This means that every month we increase the pocket money by monthly inflation\n2. We use a for loop to repeat this 12 times (for each month of the year)\n3. At the end, we compare all methods and show which one gives the best result"
+      },
+      "buttonText": "Następny krok ▶️"
+    },
+    {
+      "id": "step-7",
+      "pl": {
+        "title": "Krok 7: Wizualizacja wyników",
+        "intro": "Na koniec dodajmy wizualizację, która pokaże nam, jak zmienia się nasze kieszonkowe w ciągu roku przy różnych metodach.",
+        "code": "# Ten program pomoże nam obliczyć, jak powinno rosnąć nasze kieszonkowe\nprint(\"Witaj w Kalkulatorze Kieszonkowego!\")\n\n# Pobieramy informacje\nkieszonkowe = float(input(\"Podaj swoje aktualne miesięczne kieszonkowe (w zł): \"))\ninflacja = float(input(\"Podaj aktualny poziom rocznej inflacji (w procentach, np. 5): \"))\n\n# Obliczamy miesięczną inflację\nmiesięczna_inflacja = inflacja / 12\n\n# Przygotowujemy listy do przechowywania danych dla każdego miesiąca\nmiesiące = []\nkieszonkowe_bez_inflacji = []\nkieszonkowe_z_miesięczną = []\nkieszonkowe_składane_lista = []\n\n# Aktualne kieszonkowe na początku pierwszego miesiąca\nbieżące_kieszonkowe = kieszonkowe\nkieszonkowe_składane = kieszonkowe\n\n# Obliczamy wartości dla każdego miesiąca\nfor m in range(1, 13):\n    miesiące.append(m)\n    kieszonkowe_bez_inflacji.append(kieszonkowe)\n    \n    # Kieszonkowe z jednorazowym uwzględnieniem miesięcznej inflacji\n    kiesz_miesięczne = kieszonkowe * (1 + miesięczna_inflacja / 100)\n    kieszonkowe_z_miesięczną.append(kiesz_miesięczne)\n    \n    # Kieszonkowe z procentem składanym\n    kieszonkowe_składane = kieszonkowe_składane * (1 + miesięczna_inflacja / 100)\n    kieszonkowe_składane_lista.append(kieszonkowe_składane)\n\n# Wyświetlamy wyniki dla każdego miesiąca w formie tabeli\nprint(\"\\nMiesiąc | Bez inflacji | Z mies. inflacją | Procent składany\")\nprint(\"-\" * 60)\nfor i in range(12):\n    print(f\"{miesiące[i]:7d} | {kieszonkowe_bez_inflacji[i]:12.2f} | {kieszonkowe_z_miesięczną[i]:15.2f} | {kieszonkowe_składane_lista[i]:16.2f}\")\n\n# Obliczamy i wyświetlamy wartości po roku\nprint(\"\\nPo roku:\")\nprint(f\"Kieszonkowe bez inflacji: {kieszonkowe:.2f} zł\")\nprint(f\"Kieszonkowe z uwzględnieniem rocznej inflacji: {kieszonkowe * (1 + inflacja / 100):.2f} zł\")\nprint(f\"Kieszonkowe po roku z miesięcznym wzrostem (procent składany): {kieszonkowe_składane:.2f} zł\")\n\n# Sprawdźmy, która metoda daje najlepszy wynik\nprint(\"\\nWniosek:\")\nprint(\"Najlepiej jest zwiększać kieszonkowe co miesiąc według zasady procentu składanego,\")\nprint(\"ponieważ wtedy każdy wzrost uwzględnia poprzednie wzrosty.\")",
+        "explanation": "W tym kodzie:\n1. Tworzymy listy do przechowywania danych dla każdego miesiąca\n2. Używamy pętli for, żeby obliczyć wartości kieszonkowego dla każdego miesiąca przy różnych metodach\n3. Wyświetlamy wszystkie dane w formie tabeli\n4. Na końcu pokazujemy wniosek, że najlepsza jest metoda procentu składanego"
+      },
+      "en": {
+        "title": "Step 7: Visualizing the results",
+        "intro": "Finally, let's add a visualization that will show us how our pocket money changes over the year with different methods.",
+        "code": "# This program will help us calculate how our pocket money should grow\nprint(\"Welcome to the Pocket Money Calculator!\")\n\n# Getting information\npocket_money = float(input(\"Enter your current monthly pocket money (in PLN): \"))\ninflation = float(input(\"Enter the current annual inflation rate (in percent, e.g. 5): \"))\n\n# Calculating monthly inflation\nmonthly_inflation = inflation / 12\n\n# Preparing lists to store data for each month\nmonths = []\npocket_money_without_inflation = []\npocket_money_with_monthly = []\ncompound_pocket_money_list = []\n\n# Current pocket money at the beginning of the first month\ncurrent_pocket_money = pocket_money\ncompound_pocket_money = pocket_money\n\n# Calculating values for each month\nfor m in range(1, 13):\n    months.append(m)\n    pocket_money_without_inflation.append(pocket_money)\n    \n    # Pocket money with one-time consideration of monthly inflation\n    monthly_pocket_money = pocket_money * (1 + monthly_inflation / 100)\n    pocket_money_with_monthly.append(monthly_pocket_money)\n    \n    # Pocket money with compound interest\n    compound_pocket_money = compound_pocket_money * (1 + monthly_inflation / 100)\n    compound_pocket_money_list.append(compound_pocket_money)\n\n# Displaying results for each month in a table form\nprint(\"\\nMonth | Without infl. | With monthly infl. | Compound interest\")\nprint(\"-\" * 60)\nfor i in range(12):\n    print(f\"{months[i]:5d} | {pocket_money_without_inflation[i]:13.2f} | {pocket_money_with_monthly[i]:17.2f} | {compound_pocket_money_list[i]:18.2f}\")\n\n# Calculating and displaying values after a year\nprint(\"\\nAfter a year:\")\nprint(f\"Pocket money without inflation: {pocket_money:.2f} PLN\")\nprint(f\"Pocket money considering annual inflation: {pocket_money * (1 + inflation / 100):.2f} PLN\")\nprint(f\"Pocket money after a year with monthly growth (compound interest): {compound_pocket_money:.2f} PLN\")\n\n# Let's check which method gives the best result\nprint(\"\\nConclusion:\")\nprint(\"It is best to increase pocket money every month according to the compound interest rule,\")\nprint(\"because then each increase takes into account previous increases.\")",
+        "explanation": "In this code:\n1. We create lists to store data for each month\n2. We use a for loop to calculate pocket money values for each month with different methods\n3. We display all the data in a table form\n4. At the end, we show the conclusion that the compound interest method is the best"
+      },
+      "buttonText": "Zakończ ▶️"
+    }
+  ],
+  "conclusion": {
+    "pl": {
+      "title": "Gratulacje!",
+      "content": "Brawo! Udało Ci się stworzyć program, który pomaga obliczyć wzrost kieszonkowego z uwzględnieniem inflacji. Odkryłeś, że najlepszą metodą jest tzw. procent składany, czyli zwiększanie kieszonkowego co miesiąc o miesięczną inflację.\n\nCo się nauczyłeś?\n- Czym jest inflacja i jak wpływa na wartość pieniędzy\n- Jak obliczyć miesięczną inflację na podstawie rocznej\n- Różne metody uwzględniania inflacji przy ustalaniu kieszonkowego\n- Tworzenie tabel danych i ich analiza\n\nZ tą wiedzą możesz teraz przekonać rodziców, że Twoje kieszonkowe powinno regularnie rosnąć, aby zachować swoją realną wartość!",
+      "nextProject": "Czy chcesz teraz stworzyć kalkulator oszczędności, aby dowiedzieć się, jak odkładać część kieszonkowego?"
+    },
+    "en": {
+      "title": "Congratulations!",
+      "content":         "Well done! You have managed to create a program that helps calculate pocket money growth considering inflation. You discovered that the best method is the so-called compound interest, which means increasing your pocket money every month by monthly inflation.\n\nWhat have you learned?\n- What inflation is and how it affects the value of money\n- How to calculate monthly inflation based on annual inflation\n- Different methods of accounting for inflation when setting pocket money\n- Creating data tables and analyzing them\n\nWith this knowledge, you can now convince your parents that your pocket money should regularly increase to maintain its real value!",
+      "nextProject": "Would you like to create a savings calculator now to find out how to save a portion of your pocket money?"
+    }
+  },
+  "exercises": [
+    {
+      "id": "exercise-1",
+      "pl": {
+        "title": "Ćwiczenie 1: Oblicz wzrost kieszonkowego dla różnych poziomów inflacji",
+        "description": "Zmodyfikuj program tak, aby obliczał wzrost kieszonkowego dla trzech różnych poziomów inflacji: niskiej (2%), średniej (5%) i wysokiej (10%). Porównaj wyniki i zobacz, jak duży wpływ ma poziom inflacji na Twoje kieszonkowe.",
+        "hint": "Możesz użyć zmiennych niska_inflacja, srednia_inflacja i wysoka_inflacja, a następnie wykonać obliczenia dla każdej z nich."
+      },
+      "en": {
+        "title": "Exercise 1: Calculate pocket money growth for different inflation levels",
+        "description": "Modify the program to calculate pocket money growth for three different inflation levels: low (2%), medium (5%), and high (10%). Compare the results and see how much impact the inflation level has on your pocket money.",
+        "hint": "You can use variables low_inflation, medium_inflation, and high_inflation, and then perform calculations for each of them."
+      }
+    },
+    {
+      "id": "exercise-2",
+      "pl": {
+        "title": "Ćwiczenie 2: Kalkulator kieszonkowego na wiele lat",
+        "description": "Rozszerz program tak, aby pokazywał, jak będzie zmieniać się Twoje kieszonkowe przez 5 lat, jeśli będziesz stosować metodę procentu składanego. Wyświetl wyniki dla każdego roku.",
+        "hint": "Użyj dodatkowej pętli for, która będzie iterować przez lata (od 1 do 5). Dla każdego roku wykonaj 12 iteracji miesięcznych z procentem składanym."
+      },
+      "en": {
+        "title": "Exercise 2: Pocket money calculator for multiple years",
+        "description": "Extend the program to show how your pocket money will change over 5 years if you apply the compound interest method. Display results for each year.",
+        "hint": "Use an additional for loop that will iterate through years (from 1 to 5). For each year, perform 12 monthly iterations with compound interest."
+      }
+    },
+    {
+      "id": "exercise-3",
+      "pl": {
+        "title": "Ćwiczenie 3: Porównanie z rzeczywistymi danymi",
+        "description": "Znajdź w internecie dane o rzeczywistej inflacji w Twoim kraju w ostatnich 12 miesiącach. Zmodyfikuj program tak, aby używał tych rzeczywistych danych zamiast jednej stałej wartości inflacji. Porównaj wyniki z poprzednimi obliczeniami.",
+        "hint": "Stwórz listę miesięcznych poziomów inflacji i użyj ich w pętli for. Na przykład: miesięczne_inflacje = [0.3, 0.4, 0.5, 0.2, 0.3, 0.4, 0.3, 0.2, 0.3, 0.4, 0.5, 0.3]"
+      },
+      "en": {
+        "title": "Exercise 3: Comparison with real data",
+        "description": "Find data about the actual inflation in your country in the last 12 months on the internet. Modify the program to use this real data instead of one constant inflation value. Compare the results with previous calculations.",
+        "hint": "Create a list of monthly inflation levels and use them in a for loop. For example: monthly_inflations = [0.3, 0.4, 0.5, 0.2, 0.3, 0.4, 0.3, 0.2, 0.3, 0.4, 0.5, 0.3]"
+      }
+    }
+  ],
+  "additional_resources": {
+    "pl": {
+      "title": "Dodatkowe materiały",
+      "resources": [
+        {
+          "title": "Czym jest inflacja?",
+          "description": "Prosty przewodnik wyjaśniający inflację dla dzieci.",
+          "url": "https://edukacjaekonomiczna.pl/dla-dzieci/inflacja"
+        },
+        {
+          "title": "Kalkulator inflacji online",
+          "description": "Narzędzie, które pomoże Ci obliczyć wpływ inflacji na wartość pieniędzy.",
+          "url": "https://www.nbp.pl/kalkulator"
+        },
+        {
+          "title": "Zarządzanie kieszonkowym",
+          "description": "Porady, jak mądrze zarządzać swoim kieszonkowym.",
+          "url": "https://www.skokowo.pl/dla-dzieci/kieszonkowe"
+        }
+      ]
+    },
+    "en": {
+      "title": "Additional resources",
+      "resources": [
+        {
+          "title": "What is inflation?",
+          "description": "A simple guide explaining inflation for children.",
+          "url": "https://www.econedlink.org/resources/whats-up-with-inflation/"
+        },
+        {
+          "title": "Online inflation calculator",
+          "description": "A tool that will help you calculate the impact of inflation on the value of money.",
+          "url": "https://www.usinflationcalculator.com/"
+        },
+        {
+          "title": "Managing pocket money",
+          "description": "Tips on how to wisely manage your pocket money.",
+          "url": "https://www.moneyadviceservice.org.uk/en/articles/childrens-pocket-money"
+        }
+      ]
+    }
+  },
+  "glossary": {
+    "pl": {
+      "title": "Słowniczek",
+      "terms": [
+        {
+          "term": "Inflacja",
+          "definition": "Proces wzrostu cen w gospodarce, który sprawia, że za tę samą ilość pieniędzy możemy kupić coraz mniej towarów i usług."
+        },
+        {
+          "term": "Procent składany",
+          "definition": "Metoda obliczania, w której procent jest naliczany nie tylko od początkowej kwoty, ale również od poprzednio naliczonych procentów."
+        },
+        {
+          "term": "Siła nabywcza",
+          "definition": "Zdolność pieniądza do zakupu dóbr i usług. Inflacja zmniejsza siłę nabywczą pieniądza."
+        },
+        {
+          "term": "Waloryzacja",
+          "definition": "Podwyższenie jakiejś wartości (np. kieszonkowego) o wskaźnik inflacji, aby zachować jej realną wartość."
+        }
+      ]
+    },
+    "en": {
+      "title": "Glossary",
+      "terms": [
+        {
+          "term": "Inflation",
+          "definition": "The process of increasing prices in the economy, which means that for the same amount of money we can buy fewer and fewer goods and services."
+        },
+        {
+          "term": "Compound interest",
+          "definition": "A calculation method in which interest is calculated not only on the initial amount, but also on previously accrued interest."
+        },
+        {
+          "term": "Purchasing power",
+          "definition": "The ability of money to purchase goods and services. Inflation reduces the purchasing power of money."
+        },
+        {
+          "term": "Indexation",
+          "definition": "Increasing a value (e.g., pocket money) by the inflation rate to maintain its real value."
+        }
+      ]
+    }
+  }
+}

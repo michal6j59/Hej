@@ -1,0 +1,986 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interaktywny Przewodnik dla Młodych Finansistów</title>
+    <style>
+        body {
+            font-family: 'Comic Sans MS', 'Chalkboard SE', sans-serif;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f7f9fc;
+            color: #333;
+        }
+        h1 {
+            color: #4a6de5;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        .accordion {
+            background-color: #ffffff;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            margin-bottom: 20px;
+            overflow: hidden;
+        }
+        .accordion-header {
+            background-color: #4a6de5;
+            color: white;
+            padding: 15px 20px;
+            cursor: pointer;
+            font-weight: bold;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: background-color 0.3s;
+        }
+        .accordion-header:hover {
+            background-color: #3a5bd5;
+        }
+        .accordion-content {
+            padding: 0 20px;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.5s ease-out;
+            background-color: #fff;
+        }
+        .accordion-content.show {
+            max-height: 2000px;
+            padding: 20px;
+        }
+        .code-block {
+            background-color: #f1f1f1;
+            border-left: 4px solid #4a6de5;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 0 5px 5px 0;
+            font-family: 'Courier New', monospace;
+            white-space: pre;
+            line-height: 1.5;
+            overflow-x: auto;
+            position: relative;
+        }
+        .code-reveal {
+            cursor: pointer;
+            background-color: rgba(255, 255, 255, 0.95);
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            top: 0;
+            left: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Comic Sans MS', 'Chalkboard SE', sans-serif;
+            color: #4a6de5;
+            font-weight: bold;
+            transition: opacity 0.3s;
+        }
+        .code-reveal:hover {
+            opacity: 0.9;
+        }
+        .code-reveal.hidden {
+            display: none;
+        }
+        .code-hide {
+            cursor: pointer;
+            color: #4a6de5;
+            font-size: 0.8em;
+            font-family: 'Comic Sans MS', 'Chalkboard SE', sans-serif;
+            text-align: center;
+            margin-top: 5px;
+            font-weight: bold;
+            display: none;
+        }
+        .code-hide.visible {
+            display: block;
+        }
+        .explanation {
+            background-color: #e9f7fe;
+            border-left: 4px solid #4ac1e5;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 0 5px 5px 0;
+        }
+        .step-button {
+            background-color: #4ac1e5;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            margin: 20px 0;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: background-color 0.3s;
+        }
+        .step-button:hover {
+            background-color: #3a9bd5;
+        }
+        .next-step {
+            text-align: center;
+        }
+        .copy-button {
+            position: absolute;
+            top: 5px;
+            right: 5px;
+            background-color: #4a6de5;
+            color: white;
+            border: none;
+            border-radius: 3px;
+            padding: 3px 8px;
+            font-size: 12px;
+            cursor: pointer;
+            opacity: 0.7;
+            z-index: 10;
+        }
+        .copy-button:hover {
+            opacity: 1;
+        }
+        .copy-success {
+            position: absolute;
+            top: 5px;
+            right: 60px;
+            background-color: #4CAF50;
+            color: white;
+            padding: 3px 8px;
+            border-radius: 3px;
+            font-size: 12px;
+            display: none;
+        }
+
+        /* Language Toggle */
+        .language-toggle {
+            display: flex;
+            justify-content: center;
+            margin: 20px 0;
+        }
+
+        .language-button {
+            background-color: #f1f1f1;
+            border: none;
+            padding: 8px 15px;
+            margin: 0 5px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: background-color 0.3s;
+        }
+
+        .language-button.active {
+            background-color: #4a6de5;
+            color: white;
+        }
+
+        .eng-content {
+            display: none;
+        }
+
+        .eng-content.visible {
+            display: block;
+        }
+
+        .complete-code {
+            margin-top: 30px;
+            border-top: 2px dashed #4a6de5;
+            padding-top: 20px;
+        }
+
+        .thanks-message {
+            margin-top: 40px;
+            text-align: center;
+            padding: 20px;
+            background-color: #e9f7fe;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+
+        .thanks-message h2 {
+            color: #4a6de5;
+        }
+
+        .loading {
+            text-align: center;
+            padding: 50px;
+            font-size: 20px;
+            color: #4a6de5;
+        }
+
+        .list-item {
+            margin-bottom: 8px;
+        }
+
+        #coding-steps {
+            display: none;
+        }
+
+		.exercise-card {
+			background-color: #ffffff;
+			border-radius: 8px;
+			box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+			padding: 20px;
+			margin-bottom: 20px;
+		}
+
+		.exercise-title {
+			color: #4a6de5;
+			margin-top: 0;
+			margin-bottom: 15px;
+		}
+
+		.exercise-description {
+			margin-bottom: 15px;
+		}
+
+		.exercise-hint {
+			background-color: #fff8e1;
+			border-left: 4px solid #ffca28;
+			padding: 10px 15px;
+			border-radius: 0 5px 5px 0;
+		}
+
+		.resource-card {
+			background-color: #ffffff;
+			border-radius: 8px;
+			box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+			padding: 15px;
+			margin-bottom: 15px;
+			display: flex;
+			flex-direction: column;
+		}
+
+		.resource-title {
+			color: #4a6de5;
+			margin-top: 0;
+			margin-bottom: 10px;
+			font-weight: bold;
+		}
+
+		.resource-description {
+			margin-bottom: 10px;
+			flex-grow: 1;
+		}
+
+		.resource-link {
+			display: inline-block;
+			background-color: #4a6de5;
+			color: white;
+			text-decoration: none;
+			padding: 8px 15px;
+			border-radius: 5px;
+			transition: background-color 0.3s;
+			align-self: flex-start;
+		}
+
+		.resource-link:hover {
+			background-color: #3a5bd5;
+		}
+
+		.glossary-term {
+			background-color: #ffffff;
+			border-radius: 8px;
+			box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+			padding: 15px;
+			margin-bottom: 15px;
+		}
+
+		.glossary-term-title {
+			color: #4a6de5;
+			margin-top: 0;
+			margin-bottom: 10px;
+			font-weight: bold;
+		}
+
+		.resources-grid {
+			display: grid;
+			grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+			gap: 20px;
+			margin-top: 20px;
+		}
+    </style>
+</head>
+<body>
+    <div id="loading" class="loading">
+        <p>Ładowanie lekcji...</p>
+    </div>
+
+    <div id="content" style="display: none;">
+        <h1 id="main-title">Generator Liczb Losowych<br><small id="subtitle">Interaktywny Przewodnik dla Młodych Programistów</small></h1>
+
+        <div class="accordion">
+            <div class="accordion-header" id="intro-header">
+                <span id="intro-title">Krok 6: Budowanie generatora opartego na długości</span>
+                <span class="toggle">➕</span>
+            </div>
+            <div class="accordion-content" id="intro-content">
+                <p id="intro-content-text"></p>
+
+                <div class="explanation">
+                    <p><strong>Cel:</strong> <span id="intro-goal"></span></p>
+
+                    <p><strong>Przykład działania:</strong><br>
+                    <span id="intro-example"></span></p>
+                </div>
+
+                <div class="language-toggle">
+                    <button class="language-button active" data-lang="pl" id="intro-lang-pl">Polski</button>
+                    <button class="language-button" data-lang="en" id="intro-lang-en">English</button>
+                </div>
+
+                <div class="eng-content" id="intro-eng-content">
+                    <h3 id="intro-eng-title"></h3>
+                    <p id="intro-eng-content-text"></p>
+
+                    <p><strong>Goal:</strong> <span id="intro-eng-goal"></span></p>
+
+                    <p><strong>Example:</strong><br>
+                    <span id="intro-eng-example"></span></p>
+                </div>
+
+                <div class="next-step">
+                    <button class="step-button" id="start-coding"></button>
+                </div>
+            </div>
+        </div>
+
+        <div id="coding-steps">
+            <!-- Tutaj będą dynamicznie generowane kroki kodowania -->
+        </div>
+
+        <div class="complete-code" id="complete-code" style="display: none;">
+            <h2 id="complete-title"></h2>
+
+            <div class="code-block" id="complete-code-block">
+                <button class="copy-button" id="copy-complete">Kopiuj</button>
+                <div class="copy-success" id="copy-success-complete">Skopiowano!</div>
+                <pre id="complete-code-content"></pre>
+            </div>
+
+            <div class="explanation">
+                <p><strong id="how-it-works-title"></strong></p>
+                <ol id="how-it-works-steps">
+                    <!-- Tu będą dynamicznie generowane kroki działania -->
+                </ol>
+
+                <p><strong id="what-next-title"></strong></p>
+                <ul id="next-steps">
+                    <!-- Tu będą dynamicznie generowane następne kroki -->
+                </ul>
+            </div>
+
+            <div class="next-step">
+                <button class="step-button" id="restart"></button>
+            </div>
+        </div>
+
+        <div class="accordion" id="conclusion-accordion" style="display: none;">
+            <div class="accordion-header">
+                <span id="conclusion-title"></span>
+                <span class="toggle">➕</span>
+            </div>
+            <div class="accordion-content">
+                <div class="thanks-message">
+                    <h2 id="conclusion-title-inner"></h2>
+                    <p id="conclusion-message"></p>
+                </div>
+            </div>
+        </div>
+
+
+		<!-- Modyfikacja sekcji podsumowania (conclusion) -->
+		<div class="accordion" id="conclusion-accordion" style="display: none;">
+			<div class="accordion-header">
+				<span id="conclusion-title"></span>
+				<span class="toggle">➕</span>
+			</div>
+			<div class="accordion-content">
+				<div class="thanks-message">
+					<h2 id="conclusion-title-inner"></h2>
+					<p id="conclusion-content"></p>
+
+					<div class="language-toggle">
+						<button class="language-button active" data-lang="pl" data-section="conclusion">Polski</button>
+						<button class="language-button" data-lang="en" data-section="conclusion">English</button>
+					</div>
+
+					<div class="eng-content" id="conclusion-eng-content">
+						<h2 id="conclusion-eng-title"></h2>
+						<p id="conclusion-eng-content"></p>
+					</div>
+
+					<div class="next-step">
+						<p><strong id="next-project-label"></strong></p>
+					</div>
+				</div>
+			</div>
+		</div>
+
+
+		<!-- Nowa sekcja dla ćwiczeń (exercises) -->
+		<div class="accordion" id="exercises-accordion" style="display: none;">
+			<div class="accordion-header">
+				<span id="exercises-title">Ćwiczenia</span>
+				<span class="toggle">➕</span>
+			</div>
+			<div class="accordion-content">
+				<div id="exercises-container">
+					<!-- Tutaj będą dynamicznie generowane ćwiczenia -->
+				</div>
+
+				<div class="language-toggle">
+					<button class="language-button active" data-lang="pl" data-section="exercises">Polski</button>
+					<button class="language-button" data-lang="en" data-section="exercises">English</button>
+				</div>
+
+				<div class="eng-content" id="exercises-eng-content">
+					<div id="exercises-eng-container">
+						<!-- Tutaj będą dynamicznie generowane ćwiczenia po angielsku -->
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<!-- Nowa sekcja dla dodatkowych zasobów (additional_resources) -->
+		<div class="accordion" id="resources-accordion" style="display: none;">
+			<div class="accordion-header">
+				<span id="resources-title">Dodatkowe materiały</span>
+				<span class="toggle">➕</span>
+			</div>
+			<div class="accordion-content">
+				<div id="resources-container">
+					<!-- Tutaj będą dynamicznie generowane dodatkowe zasoby -->
+				</div>
+
+				<div class="language-toggle">
+					<button class="language-button active" data-lang="pl" data-section="resources">Polski</button>
+					<button class="language-button" data-lang="en" data-section="resources">English</button>
+				</div>
+
+				<div class="eng-content" id="resources-eng-content">
+					<h3 id="resources-eng-title"></h3>
+					<div id="resources-eng-container">
+						<!-- Tutaj będą dynamicznie generowane dodatkowe zasoby po angielsku -->
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<!-- Nowa sekcja dla słowniczka (glossary) -->
+		<div class="accordion" id="glossary-accordion" style="display: none;">
+			<div class="accordion-header">
+				<span id="glossary-title">Słowniczek</span>
+				<span class="toggle">➕</span>
+			</div>
+			<div class="accordion-content">
+				<div id="glossary-container">
+					<!-- Tutaj będą dynamicznie generowane terminy słowniczka -->
+				</div>
+
+				<div class="language-toggle">
+					<button class="language-button active" data-lang="pl" data-section="glossary">Polski</button>
+					<button class="language-button" data-lang="en" data-section="glossary">English</button>
+				</div>
+
+				<div class="eng-content" id="glossary-eng-content">
+					<h3 id="glossary-eng-title"></h3>
+					<div id="glossary-eng-container">
+						<!-- Tutaj będą dynamicznie generowane terminy słowniczka po angielsku -->
+					</div>
+				</div>
+			</div>
+		</div>
+    </div>
+
+
+
+
+    <script>
+
+
+		// Funkcja do ładowania danych JSON z zewnętrznego pliku
+	function fetchLessonData() {
+		fetch('kieszonkowe-inflacja.json')
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Nie udało się załadować pliku JSON (kod: ' + response.status + ')');
+            }
+            return response.json();
+        })
+        .then(data => {
+            const success = loadLessonData(data);
+            if (!success) {
+                throw new Error('Dane JSON mają nieprawidłową strukturę');
+            }
+        })
+        .catch(error => {
+            console.error('Błąd:', error);
+            showError("Wystąpił błąd podczas ładowania danych: " + error.message);
+        });
+	}
+
+
+
+		fetchLessonData();
+
+        // Funkcja do załadowania danych JSON i wypełnienia nimi strony
+        function loadLessonData(data) {
+            // Ustaw tytuł i podtytuł
+            document.getElementById('main-title').textContent = data.title;
+            //document.getElementById('subtitle').textContent = data.subtitle;
+
+            // Wypełnij wprowadzenie
+            document.getElementById('intro-title').textContent = data.introduction.pl.title;
+            document.getElementById('intro-content-text').innerHTML = data.introduction.pl.content;
+            document.getElementById('intro-goal').textContent = data.introduction.pl.goal;
+            document.getElementById('intro-example').textContent = data.introduction.pl.example;
+
+            // Wypełnij angielskie wprowadzenie
+            document.getElementById('intro-eng-title').textContent = data.introduction.en.title;
+            document.getElementById('intro-eng-content-text').innerHTML = data.introduction.en.content;
+            document.getElementById('intro-eng-goal').textContent = data.introduction.en.goal;
+            document.getElementById('intro-eng-example').textContent = data.introduction.en.example;
+
+            // Ustaw tekst przycisku
+            document.getElementById('start-coding').textContent = data.introduction.buttonText;
+
+            // Generowanie kroków kodowania
+            const codingStepsContainer = document.getElementById('coding-steps');
+            codingStepsContainer.innerHTML = '';
+
+            data.steps.forEach((step, index) => {
+                if (step.id === 'complete') return; // Pomijamy "complete", bo to obsługujemy osobno
+
+                const stepElement = document.createElement('div');
+                stepElement.className = 'accordion';
+                stepElement.id = step.id;
+                stepElement.innerHTML = `
+                    <div class="accordion-header">
+                        <span class="step-title">${step.pl.title}</span>
+                        <span class="toggle">➕</span>
+                    </div>
+                    <div class="accordion-content">
+                        <p class="step-intro">${step.pl.intro}</p>
+
+                        <div class="code-block">
+                            <button class="copy-button">Kopiuj</button>
+                            <div class="copy-success">Skopiowano!</div>
+                            <div class="code-reveal">Kliknij, aby zobaczyć kod</div>
+                            <pre class="code-content">${step.pl.code}</pre>
+                        </div>
+                        <div class="code-hide">Ukryj kod</div>
+
+                        <div class="explanation">
+                            ${step.pl.explanation}
+                        </div>
+
+                        <div class="language-toggle">
+                            <button class="language-button active" data-lang="pl" data-step="${step.id}">Polski</button>
+                            <button class="language-button" data-lang="en" data-step="${step.id}">English</button>
+                        </div>
+
+                        <div class="eng-content" id="${step.id}-eng-content">
+                            <h3>${step.en.title}</h3>
+                            <p>${step.en.intro}</p>
+
+                            <div class="code-block">
+                                <button class="copy-button">Kopiuj</button>
+                                <div class="copy-success">Skopiowano!</div>
+                                <div class="code-reveal">Click to see code</div>
+                                <pre class="code-content">${step.en.code}</pre>
+                            </div>
+                            <div class="code-hide">Hide code</div>
+
+                            <div class="explanation">
+                                ${step.en.explanation}
+                            </div>
+                        </div>
+
+                        <div class="next-step">
+                            <button class="step-button" data-next="${index < data.steps.length - 2 ? data.steps[index + 1].id : 'complete'}">${step.buttonText}</button>
+                        </div>
+                    </div>
+                `;
+
+                codingStepsContainer.appendChild(stepElement);
+            });
+
+            // Wypełnianie sekcji "complete code"
+            const completeData = data.steps.find(step => step.id === 'complete');
+            if (completeData) {
+                document.getElementById('complete-title').textContent = completeData.pl.title;
+                document.getElementById('complete-code-content').textContent = completeData.pl.code;
+                document.getElementById('how-it-works-title').textContent = completeData.pl.how_it_works;
+
+                // Generowanie kroków działania
+                const howItWorksSteps = document.getElementById('how-it-works-steps');
+                howItWorksSteps.innerHTML = '';
+                completeData.pl.steps.forEach(step => {
+                    const li = document.createElement('li');
+                    li.className = 'list-item';
+                    li.textContent = step;
+                    howItWorksSteps.appendChild(li);
+                });
+
+                document.getElementById('what-next-title').textContent = completeData.pl.what_next;
+
+                // Generowanie następnych kroków
+                const nextSteps = document.getElementById('next-steps');
+                nextSteps.innerHTML = '';
+                completeData.pl.next_steps.forEach(step => {
+                    const li = document.createElement('li');
+                    li.className = 'list-item';
+                    li.textContent = step;
+                    nextSteps.appendChild(li);
+                });
+
+                document.getElementById('restart').textContent = completeData.pl.restart_button;
+            }
+
+            // Wypełnianie sekcji zakończenia
+            document.getElementById('conclusion-title').textContent = data.conclusion.pl.title;
+            document.getElementById('conclusion-title-inner').textContent = data.conclusion.pl.title;
+            document.getElementById('conclusion-message').textContent = data.conclusion.pl.message;
+
+
+			if (data.conclusion) {
+				document.getElementById('conclusion-title').textContent = data.conclusion.pl.title;
+				document.getElementById('conclusion-title-inner').textContent = data.conclusion.pl.title;
+				document.getElementById('conclusion-content').innerHTML = data.conclusion.pl.content;
+				document.getElementById('next-project-label').textContent = data.conclusion.pl.nextProject;
+
+				// Angielska wersja
+				document.getElementById('conclusion-eng-title').textContent = data.conclusion.en.title;
+				document.getElementById('conclusion-eng-content').innerHTML = data.conclusion.en.content;
+
+				// Pokazujemy sekcję
+				document.getElementById('conclusion-accordion').style.display = 'block';
+			}
+
+			// Wypełnianie sekcji exercises (ćwiczenia)
+			if (data.exercises && data.exercises.length > 0) {
+				const exercisesContainer = document.getElementById('exercises-container');
+				const exercisesEngContainer = document.getElementById('exercises-eng-container');
+
+				exercisesContainer.innerHTML = '';
+				exercisesEngContainer.innerHTML = '';
+
+				data.exercises.forEach(exercise => {
+					// Polski
+					const exerciseElement = document.createElement('div');
+					exerciseElement.className = 'exercise-card';
+					exerciseElement.innerHTML = `
+						<h3 class="exercise-title">${exercise.pl.title}</h3>
+						<div class="exercise-description">${exercise.pl.description}</div>
+						<div class="exercise-hint">
+							<strong>Podpowiedź:</strong> ${exercise.pl.hint}
+						</div>
+					`;
+					exercisesContainer.appendChild(exerciseElement);
+
+					// Angielski
+					const exerciseEngElement = document.createElement('div');
+					exerciseEngElement.className = 'exercise-card';
+					exerciseEngElement.innerHTML = `
+						<h3 class="exercise-title">${exercise.en.title}</h3>
+						<div class="exercise-description">${exercise.en.description}</div>
+						<div class="exercise-hint">
+							<strong>Hint:</strong> ${exercise.en.hint}
+						</div>
+					`;
+					exercisesEngContainer.appendChild(exerciseEngElement);
+				});
+
+				// Pokazujemy sekcję
+				document.getElementById('exercises-accordion').style.display = 'block';
+			}
+
+			// Wypełnianie sekcji additional_resources (dodatkowe materiały)
+			if (data.additional_resources) {
+				document.getElementById('resources-title').textContent = data.additional_resources.pl.title;
+				document.getElementById('resources-eng-title').textContent = data.additional_resources.en.title;
+
+				const resourcesContainer = document.getElementById('resources-container');
+				const resourcesEngContainer = document.getElementById('resources-eng-container');
+
+				resourcesContainer.innerHTML = `<h3>${data.additional_resources.pl.title}</h3><div class="resources-grid"></div>`;
+				resourcesEngContainer.innerHTML = `<div class="resources-grid"></div>`;
+
+				const resourcesGrid = resourcesContainer.querySelector('.resources-grid');
+				const resourcesEngGrid = resourcesEngContainer.querySelector('.resources-grid');
+
+				// Polski
+				data.additional_resources.pl.resources.forEach(resource => {
+					const resourceElement = document.createElement('div');
+					resourceElement.className = 'resource-card';
+					resourceElement.innerHTML = `
+						<div class="resource-title">${resource.title}</div>
+						<div class="resource-description">${resource.description}</div>
+						<a href="${resource.url}" class="resource-link" target="_blank">Przejdź</a>
+					`;
+					resourcesGrid.appendChild(resourceElement);
+				});
+
+				// Angielski
+				data.additional_resources.en.resources.forEach(resource => {
+					const resourceElement = document.createElement('div');
+					resourceElement.className = 'resource-card';
+					resourceElement.innerHTML = `
+						<div class="resource-title">${resource.title}</div>
+						<div class="resource-description">${resource.description}</div>
+						<a href="${resource.url}" class="resource-link" target="_blank">Visit</a>
+					`;
+					resourcesEngGrid.appendChild(resourceElement);
+				});
+
+				// Pokazujemy sekcję
+				document.getElementById('resources-accordion').style.display = 'block';
+			}
+
+			// Wypełnianie sekcji glossary (słowniczek)
+			if (data.glossary) {
+				document.getElementById('glossary-title').textContent = data.glossary.pl.title;
+				document.getElementById('glossary-eng-title').textContent = data.glossary.en.title;
+
+				const glossaryContainer = document.getElementById('glossary-container');
+				const glossaryEngContainer = document.getElementById('glossary-eng-container');
+
+				glossaryContainer.innerHTML = `<h3>${data.glossary.pl.title}</h3>`;
+				glossaryEngContainer.innerHTML = `<h3>${data.glossary.en.title}</h3>`;
+
+				// Polski
+				data.glossary.pl.terms.forEach(term => {
+					const termElement = document.createElement('div');
+					termElement.className = 'glossary-term';
+					termElement.innerHTML = `
+						<div class="glossary-term-title">${term.term}</div>
+						<div class="glossary-term-definition">${term.definition}</div>
+					`;
+					glossaryContainer.appendChild(termElement);
+				});
+
+				// Angielski
+				data.glossary.en.terms.forEach(term => {
+					const termElement = document.createElement('div');
+					termElement.className = 'glossary-term';
+					termElement.innerHTML = `
+						<div class="glossary-term-title">${term.term}</div>
+						<div class="glossary-term-definition">${term.definition}</div>
+					`;
+					glossaryEngContainer.appendChild(termElement);
+				});
+
+				// Pokazujemy sekcję
+				document.getElementById('glossary-accordion').style.display = 'block';
+			}
+
+
+
+
+
+
+
+            // Schowaj ładowanie i pokaż zawartość
+            document.getElementById('loading').style.display = 'none';
+            document.getElementById('content').style.display = 'block';
+        }
+
+        // Obsługa przełączania języka
+        document.addEventListener('click', function(event) {
+            if (event.target.classList.contains('language-button')) {
+                const lang = event.target.getAttribute('data-lang');
+                const stepId = event.target.getAttribute('data-step');
+
+                // Dla wprowadzenia
+                if (!stepId) {
+                    document.querySelectorAll('#intro-content .language-button').forEach(button => {
+                        button.classList.toggle('active', button.getAttribute('data-lang') === lang);
+                    });
+
+                    if (lang === 'en') {
+                        document.getElementById('intro-eng-content').classList.add('visible');
+                    } else {
+                        document.getElementById('intro-eng-content').classList.remove('visible');
+                    }
+                }
+                // Dla kroków kodowania
+                else {
+                    const stepElement = document.getElementById(stepId);
+                    const langButtons = stepElement.querySelectorAll('.language-button');
+                    langButtons.forEach(button => {
+                        button.classList.toggle('active', button.getAttribute('data-lang') === lang);
+                    });
+
+                    if (lang === 'en') {
+                        document.getElementById(`${stepId}-eng-content`).classList.add('visible');
+                    } else {
+                        document.getElementById(`${stepId}-eng-content`).classList.remove('visible');
+                    }
+                }
+
+				 const sectionId = event.target.getAttribute('data-section');
+
+				// Obsługa sekcji conclusion, exercises, resources, glossary
+				if (['conclusion', 'exercises', 'resources', 'glossary'].includes(sectionId)) {
+					const section = document.getElementById(`${sectionId}-accordion`);
+					const langButtons = section.querySelectorAll('.language-button');
+					langButtons.forEach(button => {
+						button.classList.toggle('active', button.getAttribute('data-lang') === lang);
+					});
+
+					if (lang === 'en') {
+						document.getElementById(`${sectionId}-eng-content`).classList.add('visible');
+					} else {
+						document.getElementById(`${sectionId}-eng-content`).classList.remove('visible');
+					}
+				}
+
+            }
+        });
+
+        // Obsługa akordeonu
+        document.addEventListener('click', function(event) {
+            if (event.target.classList.contains('accordion-header') || event.target.parentElement?.classList.contains('accordion-header')) {
+                const header = event.target.classList.contains('accordion-header') ? event.target : event.target.parentElement;
+                const content = header.nextElementSibling;
+                const toggle = header.querySelector('.toggle');
+
+                content.classList.toggle('show');
+                toggle.textContent = content.classList.contains('show') ? '➖' : '➕';
+            }
+        });
+
+        // Obsługa przycisków "Następny krok"
+        document.addEventListener('click', function(event) {
+            if (event.target.classList.contains('step-button')) {
+                const nextId = event.target.getAttribute('data-next');
+
+                if (nextId === 'complete') {
+                    document.getElementById('coding-steps').style.display = 'none';
+                    document.getElementById('complete-code').style.display = 'block';
+                    document.getElementById('conclusion-accordion').style.display = 'block';
+                    window.scrollTo(0, document.getElementById('complete-code').offsetTop - 20);
+
+					 // Pokazujemy wszystkie dodatkowe sekcje
+					['conclusion-accordion', 'exercises-accordion', 'resources-accordion', 'glossary-accordion'].forEach(id => {
+						document.getElementById(id).style.display = 'block';
+					});
+
+                } else if (nextId) {
+                    document.getElementById('coding-steps').style.display = 'block';
+                    const nextStep = document.getElementById(nextId);
+                    const header = nextStep.querySelector('.accordion-header');
+                    const content = nextStep.querySelector('.accordion-content');
+                    const toggle = header.querySelector('.toggle');
+
+                    content.classList.add('show');
+                    toggle.textContent = '➖';
+                    window.scrollTo(0, nextStep.offsetTop - 20);
+                }
+            }
+        });
+
+        // Obsługa przycisku "Start coding"
+        document.getElementById('start-coding').addEventListener('click', function() {
+            document.getElementById('coding-steps').style.display = 'block';
+
+            // Otwieramy pierwszy krok
+            const firstStep = document.querySelector('#coding-steps .accordion');
+            if (firstStep) {
+                const content = firstStep.querySelector('.accordion-content');
+                const toggle = firstStep.querySelector('.toggle');
+
+                content.classList.add('show');
+                toggle.textContent = '➖';
+                window.scrollTo(0, firstStep.offsetTop - 20);
+            }
+        });
+
+        // Obsługa przycisku "Restart"
+        document.getElementById('restart').addEventListener('click', function() {
+            document.getElementById('complete-code').style.display = 'none';
+            document.getElementById('conclusion-accordion').style.display = 'none';
+            document.getElementById('coding-steps').style.display = 'none';
+
+            // Zamykamy wszystkie kroki
+            document.querySelectorAll('.accordion-content').forEach(content => {
+                content.classList.remove('show');
+            });
+            document.querySelectorAll('.toggle').forEach(toggle => {
+                toggle.textContent = '➕';
+            });
+
+            // Otwieramy wprowadzenie
+            const introContent = document.getElementById('intro-content');
+            introContent.classList.add('show');
+            document.getElementById('intro-header').querySelector('.toggle').textContent = '➖';
+
+            window.scrollTo(0, 0);
+
+            // Przywracamy stan początkowy kodu (ukryty)
+            document.querySelectorAll('.code-reveal').forEach(reveal => {
+                reveal.classList.remove('hidden');
+            });
+            document.querySelectorAll('.code-hide').forEach(hide => {
+                hide.classList.remove('visible');
+            });
+
+			// Zamykamy też nowe sekcje
+			['conclusion-accordion', 'exercises-accordion', 'resources-accordion', 'glossary-accordion'].forEach(id => {
+				document.getElementById(id).style.display = 'none';
+			});
+        });
+
+        // Pokazywanie/ukrywanie kodu
+        document.addEventListener('click', function(event) {
+            if (event.target.classList.contains('code-reveal')) {
+                const codeBlock = event.target.parentElement;
+                const codeContent = codeBlock.querySelector('.code-content');
+                const codeReveal = event.target;
+                const codeHide = codeBlock.nextElementSibling;
+
+                codeReveal.classList.add('hidden');
+                codeHide.classList.add('visible');
+            }
+
+            if (event.target.classList.contains('code-hide')) {
+                const codeHide = event.target;
+                const codeBlock = codeHide.previousElementSibling;
+                const codeReveal = codeBlock.querySelector('.code-reveal');
+
+                codeReveal.classList.remove('hidden');
+                codeHide.classList.remove('visible');
+            }
+        });
+
+        // Kopiowanie kodu
+        document.addEventListener('click', function(event) {
+            if (event.target.classList.contains('copy-button')) {
+                const button = event.target;
+                const codeBlock = button.parentElement;
+                const successMessage = codeBlock.querySelector('.copy-success');
+                const codeContent = codeBlock.querySelector('.code-content').textContent;
+
+                navigator.clipboard.writeText(codeContent).then(function() {
+                    successMessage.style.display = 'block';
+                    setTimeout(function() {
+                        successMessage.style.display = 'none';
+                    }, 2000);
+                });
+            }
+        });
+
+        // Załaduj dane przy starcie
+        window.addEventListener('DOMContentLoaded', function() {
+            // Ładujemy przykładowe dane zamiast z zewnętrznego pliku
+            loadLessonData(lessonData);
+
+            // Domyślnie otwieramy wprowadzenie
+            const introContent = document.getElementById('intro-content');
+            const introToggle = document.getElementById('intro-header').querySelector('.toggle');
+            introContent.classList.add('show');
+            introToggle.textContent = '➖';
+        });
+    </script>
+</body>
+</html>
